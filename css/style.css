@@ -1,0 +1,76 @@
+@font-face {
+  font-family: "Halisa";
+  src: url("../assets/fonts/Halisa-CondensedBold.otf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Halisa";
+}
+
+#canvas {
+  position: relative;
+}
+
+#canvas h1 {
+  position: absolute;
+  top: 20vh;
+  left: 20vw;
+  font-size: 100px;
+  width: 24ch;
+  max-width: 100%;
+  line-height: 0.9;
+  pointer-events: none;
+}
+
+.portfolio-button {
+  position: absolute;
+  top: calc(60vh - 100px);
+  left: calc(30vw - 100px);
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease-in;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 20px;
+  font-size: 42px;
+}
+
+.portfolio-button:hover {
+  background: #d3f539;
+  color: white;
+}
+
+#home-logo {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  cursor: pointer;
+}
+
+#menu-button {
+  cursor: pointer;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+
+#language-switch {
+  cursor: pointer;
+  position: absolute;
+  right: 40px;
+  top: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  font-size: 21px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
