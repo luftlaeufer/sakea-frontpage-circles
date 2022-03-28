@@ -23,6 +23,7 @@ body {
   justify-content: center;
   position: relative;
   padding: 40px;
+  cursor: cell;
 }
 
 @media (max-width: 730px) {

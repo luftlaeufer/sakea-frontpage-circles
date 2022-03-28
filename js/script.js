@@ -59,7 +59,7 @@ function balls() {
 
   if (window.innerWidth <= 730) {
     cols = 6;
-    rows = 6;
+    rows = 5;
   }
 
   // add circles
@@ -79,13 +79,16 @@ function balls() {
     });
   });
 
+
+  let wallThickness = 200;
+
   Composite.add(world, [
     // walls x | y | width | height
     // walls need to be thicker
-    Bodies.rectangle(window.innerWidth / 2, -26, window.innerWidth, 50, { isStatic: true }), //top
-    Bodies.rectangle(window.innerWidth + 26, window.innerHeight / 2, 50, window.innerHeight, { isStatic: true }), //right
-    Bodies.rectangle(window.innerWidth / 2, window.innerHeight + 26, window.innerWidth, 50, { isStatic: true }), //bottom
-    Bodies.rectangle(-26, window.innerHeight / 2, 50, window.innerHeight, { isStatic: true }), //left
+    Bodies.rectangle(window.innerWidth / 2, -wallThickness/2 - 1, window.innerWidth, wallThickness, { isStatic: true }), //top
+    Bodies.rectangle(window.innerWidth + wallThickness / 2 + 1, window.innerHeight / 2, wallThickness, window.innerHeight, { isStatic: true }), //right
+    Bodies.rectangle(window.innerWidth / 2, window.innerHeight + wallThickness / 2 + 1, window.innerWidth, wallThickness, { isStatic: true }), //bottom
+    Bodies.rectangle(-wallThickness/2 - 1, window.innerHeight / 2, wallThickness, window.innerHeight, { isStatic: true }), //left
 
     stack,
 
