@@ -13,13 +13,31 @@ function balls() {
     Bodies = Matter.Bodies,
     Common = Matter.Common;
 
+  let cols = 12;
+  let rows = 12;
+  let size = 0;
+
+  let buttonPositionX = window.innerWidth * 0.22;
+  let buttonsPositionY = window.innerHeight * 0.75;
+  let buttonSize = 100;
+
+  if (window.innerWidth <= 730) {
+    buttonPositionX = window.innerWidth * 0.22;
+    buttonsPositionY = window.innerHeight * 0.85;
+    buttonSize = 75;
+  }
+
+  function random(min, max) {
+    return (Math.random() * (max - min) + min).toFixed(2);;
+  }
+
   // create engine
   const engine = Engine.create(),
     world = engine.world;
 
   // create renderer
   const render = Render.create({
-    element: document.body,
+    element: document.getElementById('canvas'),
     engine: engine,
     options: {
       width: window.innerWidth,
@@ -29,6 +47,8 @@ function balls() {
     },
   });
 
+  //engine.timing.timeScale = 1.25;
+
   Render.run(render);
 
   // create runner
@@ -37,33 +57,40 @@ function balls() {
 
   // add bodies
 
-  const cols = 12;
-  const rows = 12;
+  if (window.innerWidth <= 730) {
+    cols = 6;
+    rows = 6;
+  }
 
+  // add circles
   const stack = Composites.stack(0, 0, cols, rows, 0, 0, function (x, y) {
-    let size = Math.round(Common.random(16, 64));
+    size = random(cols, (window.innerWidth / cols * 0.5));
+
+    if (window.innerWidth <= 730) {
+      size = random(cols, (window.innerWidth / cols * 0.75 ));
+    }
+
     return Bodies.circle(x, y, size, {
       render: {
         fillStyle: "#D3F539",
-        strokeStyle: "transparent",
-        lineWidth: 0,
+        strokeStyle: "white",
+        lineWidth: 1,
       },
     });
   });
 
-  //console.log(stack);
-
   Composite.add(world, [
     // walls x | y | width | height
-    Bodies.rectangle(window.innerWidth / 2, -1, window.innerWidth, 1, { isStatic: true }), //top
-    Bodies.rectangle(window.innerWidth + 1, window.innerHeight / 2, 1, window.innerHeight, { isStatic: true }), //right
-    Bodies.rectangle(window.innerWidth / 2, window.innerHeight + 1, window.innerWidth, 1, { isStatic: true }), //bottom
-    Bodies.rectangle(0, window.innerHeight / 2, 1, window.innerHeight, { isStatic: true }), //left
+    // walls need to be thicker
+    Bodies.rectangle(window.innerWidth / 2, -26, window.innerWidth, 50, { isStatic: true }), //top
+    Bodies.rectangle(window.innerWidth + 26, window.innerHeight / 2, 50, window.innerHeight, { isStatic: true }), //right
+    Bodies.rectangle(window.innerWidth / 2, window.innerHeight + 26, window.innerWidth, 50, { isStatic: true }), //bottom
+    Bodies.rectangle(-26, window.innerHeight / 2, 50, window.innerHeight, { isStatic: true }), //left
 
     stack,
 
     // portfolio button
-    Bodies.circle(window.innerWidth * 0.3, window.innerHeight * 0.6, 100, {
+    Bodies.circle(buttonPositionX, buttonsPositionY, buttonSize, {
       isStatic: true,
       render: {
         fillStyle: "white",
@@ -73,7 +100,7 @@ function balls() {
     }),
 
     // home logo  in upper left corner
-    Bodies.circle(0, 0, 200, {
+    Bodies.circle(0, 0, buttonSize * 2, {
       isStatic: true,
       render: {
         fillStyle: "white",
@@ -83,7 +110,7 @@ function balls() {
     }),
 
     // menu in upper right corner
-    Bodies.circle(window.innerWidth, 0, 200, {
+    Bodies.circle(window.innerWidth, 0, buttonSize * 1.5, {
       isStatic: true,
       render: {
         fillStyle: "white",
@@ -93,7 +120,7 @@ function balls() {
     }),
 
     // language switcher in lower right corner
-    Bodies.rectangle(window.innerWidth, window.innerHeight, 200, 200, {
+    Bodies.circle(window.innerWidth, window.innerHeight - buttonSize * 0.3, buttonSize * 1.2, {
       isStatic: true,
       render: {
         fillStyle: "white",
@@ -119,4 +146,8 @@ function balls() {
 
   // keep the mouse in sync with rendering
   render.mouse = mouse;
+
+  window.onresize = function() {
+    console.log('resized')
+  }
 }

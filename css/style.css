@@ -10,25 +10,69 @@
   font-family: "Halisa";
 }
 
+html,
+body {
+  height: 100%;
+}
+
 #canvas {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
+  padding: 40px;
+}
+
+@media (max-width: 730px) {
+  #canvas {
+    padding: 20px;
+  }
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 #canvas h1 {
-  position: absolute;
-  top: 20vh;
-  left: 20vw;
-  font-size: 100px;
+  font-size: 120px;
   width: 24ch;
   max-width: 100%;
   line-height: 0.9;
   pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 1080px) {
+  #canvas h1 {
+    font-size: 100px;
+  }
+}
+
+/* @media (max-width: 900px) {
+  #canvas h1 {
+    font-size: 80px;
+    width: 100%;
+  }
+}
+*/
+
+@media (max-width: 730px) {
+  #canvas h1 {
+    font-size: 80px;
+    line-height: 1;
+  }
 }
 
 .portfolio-button {
   position: absolute;
-  top: calc(60vh - 100px);
-  left: calc(30vw - 100px);
+  top: calc(75% - 100px);
+  left: calc(22% - 100px);
   width: 200px;
   height: 200px;
   display: flex;
@@ -38,7 +82,18 @@
   cursor: pointer;
   border-radius: 50%;
   padding: 20px;
-  font-size: 42px;
+  font-size: 30px;
+  z-index: 1;
+}
+
+@media (max-width: 730px) {
+  .portfolio-button {
+    top: calc(85% - 75px);
+    left: calc(22% - 75px);
+    width: 150px;
+    height: 150px;
+    font-size: 20px;
+  }
 }
 
 .portfolio-button:hover {
@@ -51,6 +106,7 @@
   top: 40px;
   left: 40px;
   cursor: pointer;
+  z-index: 1;
 }
 
 #menu-button {
@@ -58,19 +114,40 @@
   position: absolute;
   top: 40px;
   right: 40px;
+  z-index: 1;
 }
 
 #language-switch {
   cursor: pointer;
   position: absolute;
   right: 40px;
-  top: calc(100vh - 80px);
+  top: calc(100% - 100px);
   display: flex;
   flex-direction: column;
-  font-size: 21px;
+  font-size: 30px;
+  z-index: 1;
+}
+
+@media (max-width: 730px) {
+  #home-logo {
+    top: 20px;
+    left: 20px;
+  }
+  #menu-button {
+    top: 20px;
+    right: 20px;
+  }
+  #language-switch {
+    right: 20px;
+    top: calc(100% - 80px);
+  }
 }
 
 a {
   text-decoration: none;
   color: black;
+}
+
+a:hover {
+  color: #d3f539;
 }
