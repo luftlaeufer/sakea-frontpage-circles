@@ -17,13 +17,17 @@ function balls() {
   let rows = 12;
   let size = 0; // ball sizes
 
-  let buttonPositionX = window.innerWidth * 0.22;
+  let buttonPositionX = window.innerWidth * 0.35;
   let buttonsPositionY = window.innerHeight * 0.75;
   let buttonSize = 100;
 
+  if (window.innerWidth >= 1400) {
+    buttonPositionX = window.innerWidth * 0.39;
+  }
+
   if (window.innerWidth <= 730) {
     buttonPositionX = window.innerWidth * 0.22;
-    buttonsPositionY = window.innerHeight * 0.85;
+    buttonsPositionY = window.innerHeight * 0.82;
     buttonSize = 75;
   }
 

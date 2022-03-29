@@ -47,6 +47,8 @@ canvas {
   line-height: 0.9;
   pointer-events: none;
   z-index: 1;
+  margin-bottom: 50px;
+  font-weight: 700;
 }
 
 @media (max-width: 1080px) {
@@ -65,7 +67,7 @@ canvas {
 .portfolio-button {
   position: absolute;
   top: calc(75% - 100px);
-  left: calc(22% - 100px);
+  left: calc(35% - 100px);
   width: 200px;
   height: 200px;
   display: flex;
@@ -79,9 +81,15 @@ canvas {
   z-index: 1;
 }
 
+@media (min-width: 1400px) {
+  .portfolio-button {
+    left: calc(39% - 100px);
+  }
+}
+
 @media (max-width: 730px) {
   .portfolio-button {
-    top: calc(85% - 75px);
+    top: calc(82% - 75px);
     left: calc(22% - 75px);
     width: 150px;
     height: 150px;
