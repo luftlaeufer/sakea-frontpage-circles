@@ -55,14 +55,6 @@ canvas {
   }
 }
 
-/* @media (max-width: 900px) {
-  #canvas h1 {
-    font-size: 80px;
-    width: 100%;
-  }
-}
-*/
-
 @media (max-width: 730px) {
   #canvas h1 {
     font-size: 80px;

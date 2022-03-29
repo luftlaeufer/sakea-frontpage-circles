@@ -10,12 +10,12 @@ function balls() {
     MouseConstraint = Matter.MouseConstraint,
     Mouse = Matter.Mouse,
     Composite = Matter.Composite,
-    Bodies = Matter.Bodies,
-    Common = Matter.Common;
+    Bodies = Matter.Bodies;
+    //Common = Matter.Common;
 
   let cols = 12;
   let rows = 12;
-  let size = 0;
+  let size = 0; // ball sizes
 
   let buttonPositionX = window.innerWidth * 0.22;
   let buttonsPositionY = window.innerHeight * 0.75;
@@ -149,8 +149,4 @@ function balls() {
 
   // keep the mouse in sync with rendering
   render.mouse = mouse;
-
-  window.onresize = function() {
-    console.log('resized')
-  }
 }
